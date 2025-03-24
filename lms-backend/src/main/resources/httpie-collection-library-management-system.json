@@ -18,7 +18,7 @@
     },
     "requests": [
       {
-        "name": "",
+        "name": "book/add",
         "url": "localhost:8081/api/book/add",
         "method": "POST",
         "headers": [],
@@ -33,7 +33,158 @@
             "name": ""
           },
           "text": {
-            "value": "{\n  \"name\": \"pro spring 5\",\n  \"author\": \"adam\",\n  \"releaseYear\": \"2025-03-24\",\n  \"isbn\": \"isbn-1234567\",\n  \"genre\": \"programming\"\n}",
+            "value": "{\n  \"name\": \"pro spring 5\",\n  \"author\": \"adam\",\n  \"releaseYear\": \"2025-03-24\",\n  \"isbn\": \"123-4567\",\n  \"genre\": \"programming\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "book/all",
+        "url": "localhost:8081/api/book/all",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "book/get/{id}",
+        "url": "localhost:8081/api/book/get/852",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "book/update",
+        "url": "localhost:8081/api/book/update",
+        "method": "PUT",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "{\n  \"id\": 852,\n  \"name\": \"pro spring 5\",\n  \"author\": \"adam\",\n  \"releaseYear\": \"2025-03-24\",\n  \"isbn\": \"123-456789\",\n  \"genre\": \"programming\"\n}",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "book/delete/{id}",
+        "url": "localhost:8081/api/book/delete/1002",
+        "method": "DELETE",
+        "headers": [],
+        "queryParams": [],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
+            "format": "application/json"
+          },
+          "form": {
+            "isMultipart": false,
+            "fields": []
+          },
+          "graphql": {
+            "query": "",
+            "variables": ""
+          }
+        }
+      },
+      {
+        "name": "book/search",
+        "url": "localhost:8081/api/book/search",
+        "method": "GET",
+        "headers": [],
+        "queryParams": [
+          {
+            "name": "keyword",
+            "value": "pro",
+            "enabled": true
+          }
+        ],
+        "pathParams": [],
+        "auth": {
+          "type": "inherited"
+        },
+        "body": {
+          "type": "text",
+          "file": {
+            "name": ""
+          },
+          "text": {
+            "value": "",
             "format": "application/json"
           },
           "form": {

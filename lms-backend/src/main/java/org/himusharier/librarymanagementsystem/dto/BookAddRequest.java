@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookRequest {
+public class BookAddRequest {
 
     @NotBlank(message = "book name can not be blank")
     private String name;

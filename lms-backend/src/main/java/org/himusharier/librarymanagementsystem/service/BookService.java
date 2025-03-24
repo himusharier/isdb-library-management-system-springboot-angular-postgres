@@ -1,13 +1,16 @@
 package org.himusharier.librarymanagementsystem.service;
 
-import org.himusharier.librarymanagementsystem.dto.BookRequest;
+import org.himusharier.librarymanagementsystem.dto.BookAddRequest;
+import org.himusharier.librarymanagementsystem.dto.BookUpdateRequest;
 import org.himusharier.librarymanagementsystem.entity.Book;
 
 import java.util.List;
 
 public interface BookService {
-    public Book addBook(BookRequest bookRequest);
-    public List<Book> getAllBooks();
-    public Book updateBook(Book book);
-    public List<Book> searchBookByName(String keyword);
+    Book addBook(BookAddRequest bookAddRequest);
+    List<Book> getAllBooks();
+    Book getBookById(long id);
+    Book updateBook(BookUpdateRequest bookUpdateRequest);
+    boolean deleteBook(long id);
+    List<Book> searchBookByName(String keyword);
 }

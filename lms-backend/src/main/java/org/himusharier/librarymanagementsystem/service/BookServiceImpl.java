@@ -1,6 +1,7 @@
 package org.himusharier.librarymanagementsystem.service;
 
-import org.himusharier.librarymanagementsystem.dto.BookRequest;
+import org.himusharier.librarymanagementsystem.dto.BookAddRequest;
+import org.himusharier.librarymanagementsystem.dto.BookUpdateRequest;
 import org.himusharier.librarymanagementsystem.entity.Book;
 import org.himusharier.librarymanagementsystem.exception.BookNotFoundException;
 import org.himusharier.librarymanagementsystem.repository.BookRepository;
@@ -18,14 +19,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book addBook(BookRequest bookRequest) {
+    public Book addBook(BookAddRequest bookAddRequest) {
         Book book = Book.build(
                 0,
-                bookRequest.getName(),
-                bookRequest.getAuthor(),
-                bookRequest.getReleaseYear(),
-                bookRequest.getIsbn(),
-                bookRequest.getGenre()
+                bookAddRequest.getName(),
+                bookAddRequest.getAuthor(),
+                bookAddRequest.getReleaseYear(),
+                bookAddRequest.getIsbn(),
+                bookAddRequest.getGenre()
         );
         return bookRepository.save(book);
     }
@@ -36,16 +37,42 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book updateBook(Book book) {
-        Optional<Book> checkBook = bookRepository.findById(book.getId());
+    public Book getBookById(long id) {
+        return bookRepository.getBookById(id);
+    }
+
+    @Override
+    public Book updateBook(BookUpdateRequest bookUpdateRequest) {
+        Optional<Book> checkBook = bookRepository.findById(bookUpdateRequest.getId());
         if (checkBook.isPresent()) {
-            return bookRepository.save(book);
+            Book updatedBook = Book.build(
+                    bookUpdateRequest.getId(),
+                    bookUpdateRequest.getName(),
+                    bookUpdateRequest.getAuthor(),
+                    bookUpdateRequest.getReleaseYear(),
+                    bookUpdateRequest.getIsbn(),
+                    bookUpdateRequest.getGenre()
+            );
+            return bookRepository.save(updatedBook);
+
+        } else {
+            throw new BookNotFoundException("book not found with id: " + bookUpdateRequest.getId());
         }
-        throw new BookNotFoundException("book not found with id: " + book.getId());
+    }
+
+    @Override
+    public boolean deleteBook(long id) {
+        if (bookRepository.existsById(id)) {
+            bookRepository.deleteById(id);
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
     @Override
     public List<Book> searchBookByName(String keyword) {
-        return bookRepository.findByNameLikeIgnoreCase(keyword);
+        return bookRepository.findByNameContainingIgnoreCase(keyword);
     }
 }
