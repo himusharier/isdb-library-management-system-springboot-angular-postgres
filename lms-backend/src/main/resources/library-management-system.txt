@@ -1,0 +1,19 @@
+library management system:
+
+book: (name, author, category, relaease date, isbn)
+  add books 
+  book search (by fields: name, author, category etc)
+  modify book
+  get all books / pagination
+  
+user: (user name)
+  borrow book 
+  return book
+
+> book borrow and return history.
+
+history for admin:
+  particular book history
+  
+
+
