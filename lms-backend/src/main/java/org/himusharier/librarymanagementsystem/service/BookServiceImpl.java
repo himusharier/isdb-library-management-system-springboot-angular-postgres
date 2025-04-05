@@ -20,14 +20,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book addBook(BookAddRequest bookAddRequest) {
-        Book book = Book.build(
-                0,
-                bookAddRequest.getName(),
-                bookAddRequest.getAuthor(),
-                bookAddRequest.getReleaseYear(),
-                bookAddRequest.getIsbn(),
-                bookAddRequest.getGenre()
-        );
+        Book book = Book.builder()
+                .name(bookAddRequest.getName())
+                .author(bookAddRequest.getAuthor())
+                .releaseYear(bookAddRequest.getReleaseYear())
+                .isbn(bookAddRequest.getIsbn())
+                .genre(bookAddRequest.getGenre())
+                .build();
         return bookRepository.save(book);
     }
 
@@ -45,14 +44,14 @@ public class BookServiceImpl implements BookService {
     public Book updateBook(BookUpdateRequest bookUpdateRequest) {
         Optional<Book> checkBook = bookRepository.findById(bookUpdateRequest.getId());
         if (checkBook.isPresent()) {
-            Book updatedBook = Book.build(
-                    bookUpdateRequest.getId(),
-                    bookUpdateRequest.getName(),
-                    bookUpdateRequest.getAuthor(),
-                    bookUpdateRequest.getReleaseYear(),
-                    bookUpdateRequest.getIsbn(),
-                    bookUpdateRequest.getGenre()
-            );
+            Book updatedBook = Book.builder()
+                    .id(bookUpdateRequest.getId())
+                    .name(bookUpdateRequest.getName())
+                    .author(bookUpdateRequest.getAuthor())
+                    .releaseYear(bookUpdateRequest.getReleaseYear())
+                    .isbn(bookUpdateRequest.getIsbn())
+                    .genre(bookUpdateRequest.getGenre())
+                    .build();
             return bookRepository.save(updatedBook);
 
         } else {
